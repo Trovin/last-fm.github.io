@@ -1,0 +1,11 @@
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.item {
+  width: 33.33333333%;
+  padding: 10px;
+  border: 1px solid #000000;
+}

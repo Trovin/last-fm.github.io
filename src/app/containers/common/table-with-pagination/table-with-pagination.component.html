@@ -1,0 +1,35 @@
+<div class="item-container">
+  <div class="table-container" *ngIf="dataSource">
+    <mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Track name </mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="name"> {{row.name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="artistName">
+        <mat-header-cell *matHeaderCellDef> Artist name </mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="artistName"> {{row.artist.name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="image">
+        <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="image">
+          <img class="table-image" [src]="row.image[2]['#text'] ? row.image[3]['#text'] : './assets/images/sound-album.jpg'" alt="track-image">
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="artistUrl">
+        <mat-header-cell *matHeaderCellDef> Artist url </mat-header-cell>
+        <mat-cell *matCellDef="let row" data-label="artistUrl">
+          <a class="link" target="_blank" href="{{row.artist.url}}">{{row.artist.url}}</a>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[4, 8, 10]"></mat-paginator>
+  </div>
+</div>

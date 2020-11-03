@@ -1,0 +1,15 @@
+<form class="form" [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
+  <mat-form-field class="example-full-width">
+    <mat-label>Enter track name...</mat-label>
+    <input matInput formControlName="trackName">
+  </mat-form-field>
+  <button mat-flat-button class="form-btn" color="primary" [disabled]="form.invalid">Find</button>
+</form>
+
+<h3 *ngIf="foundTrack$">Result: </h3>
+<ul class="tracks-wrapper" *ngIf="foundTrack$ | async; let resp">
+  <li class="tracks-item" *ngFor="let track of resp.results.trackmatches.track">
+    <h4 class="track-name">Track name: {{track.name}}</h4>
+    <h5>Artist name: {{track.artist.name}}</h5>
+  </li>
+</ul>

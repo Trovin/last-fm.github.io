@@ -1,0 +1,11 @@
+<header class="header">
+  <nav>
+    <ul class="main-menu">
+      <li class="main-menu__item" *ngFor="let item of menuItems">
+        <a [routerLink]="[item.routing]" class="main-menu__link" routerLinkActive="main-menu__link_active">
+          {{item.viewValue}}
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
